@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion LandingPage</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Faustina", sans-serif;
+        cursor: pointer;
+      }
+      .wrapper {
+        width: 1470px;
+        height: 100vh;
+      }
+      .header {
+        position: fixed;
+        z-index: 1000;
+        background-color: #3b5b69;
+        width: 1470px;
+        padding: 0px 30px;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .header .logo img {
+        height: 50px;
+      }
+      .menu {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+      }
+      .menu .item a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 10px 20px;
+        transition: background 0.3s, color 0.3s;
+      }
+      .menu .item a:hover {
+        color: #3498db;
+        border-radius: 5px;
+      }
+      .actions {
+        display: flex;
+        gap: 22px;
+      }
+      .actions .item img {
+        width: 50px;
+        height: 50px;
+      }
+      .banner {
+        background-image: url("https://engrasia.com/cdn/shop/files/1.jpg?v=1711347254&width=2200");
+        background-size: 2000px;
+        height: 750px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .background-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .banner .box-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        position: relative;
+      }
+      .banner .box-left h2 {
+        font-size: 60px;
+        color: white;
+      }
+      .banner .box-left button {
+        width: 191px;
+        height: 40px;
+        margin-top: 20px;
+        background: white;
+        border: none;
+        outline: none;
+        color: black;
+        font-weight: bold;
+        border-radius: 20px;
+        transition: 0.4s;
+      }
+      .banner .box-left button:hover {
+        background:#3498db;
+        color: #fff;
+      }
+      .banner .box-left h2:hover {
+        color:#3498db;
+      }
+      .gioithieu {
+        margin-top: 10px;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url("item/banner/gioithieu.png");
+        background-size: cover;
+      }
+      .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #3b5b69;
+      }
+      .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+        font-size: 70px;
+      }
+      .left-text {
+        position: absolute;
+        top: 30%;
+        left: 5%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        text-align: left;
+        max-width: 30%;
+        color: #3b5b69;
+      }
+      .right-text {
+        position: absolute;
+        top: 30%;
+        right: 5%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        text-align: right;
+        max-width: 30%;
+        color: #3b5b69;
+      }
+      .wp-products {
+        text-align: center;
+        margin-top: 50px;
+      }
+      .wp-products h1 {
+        color: #3b5b69;
+        font-size: 50px;
+        margin-bottom: 50px;
+      }
+      .wp-products img {
+        width: 1470px;
+        height: 650px;
+      }
+
+      .hang {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 20px;
+        width: 80%;
+        max-width: 1500px;
+        margin: 0 auto;
+      }
+
+      .item2 {
+        margin-left: 10px;
+        margin-right: 10px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 1s;
+      }
+
+      .item2 img {
+        width: 100%;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .item2:hover img {
+        transform: scale(1.1);
+      }
+
+      .icons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1;
+      }
+
+      .icons i {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 8px;
+        border-radius: 50%;
+        transition: background-color 0.3s;
+      }
+
+      .icons img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .icons i:hover {
+        background-color: #3498db;
+      }
+
+      .info {
+        padding: 15px;
+        text-align: center;
+      }
+
+      .info h3 {
+        margin: 10px 0;
+        transition: color 0.3s ease;
+      }
+
+      .info p {
+        margin: 0;
+        color: #888;
+      }
+
+      .info .price {
+        font-size: 1.2em;
+        color: #e74c3c;
+      }
+
+      .info .original-price {
+        text-decoration: line-through;
+        color: #888;
+        font-size: 0.9em;
+      }
+
+      .item2:hover h3 {
+        color: #3498db;
+      }
+      .sale-container{
+        display: flex;
+        background-color: #333;
+        color: #fff;
+      }
+      .bannersale{
+        margin: 0;
+        padding: 0;
+        height: 500px;
+        width: 1470px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        font-family: Arial, sans-serif;
+        margin-top: 40px;
+      }
+      .text-sale {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .text-saleh1 {
+        font-size: 300px;
+        margin: 0;
+      }
+      .text-sale h2 {
+        font-size: 200px;
+        margin: 0;
+        color: red;
+      }
+      .image-sale {
+        flex: 1;
+      }
+      .image-sale img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .sale-badge {
+             position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 3;
+        }
+        .danhgia {
+        text-align: center;
+        margin: 50px auto;
+      }
+
+      .danhgia h1 {
+        font-size: 36px;
+        color: #3b5b69;
+        margin-bottom: 30px;
+      }
+
+      .reviews {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+
+      .review {
+        background-color: #295166;
+        color: white;
+        width: 30%;
+        padding: 20px;
+        margin: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .review img {
+        border-radius: 50%;
+        width: 110px;
+        height: 110px;
+        margin-bottom: 15px;
+      }
+
+      .review h2 {
+        margin: 0;
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+
+      .review p {
+        font-size: 16px;
+      }
+
+      .review:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 768px) {
+        .review {
+          width: 45%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .review {
+          width: 90%;
+        }
+      }
+      .contact {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+        margin: 0;
+      }
+
+      .contact-form {
+        background-color: #3b5b69;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        text-align: center;
+      }
+
+      .contact-form label {
+        display: block;
+        color: white;
+        margin: 10px 0 5px;
+        text-align: left;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: calc(100% - 30px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid white;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .contact-form button {
+        background-color: #fbc531;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-form button:hover {
+        background-color: #3498db;
+        color: white;
+      }
+      h1{
+        text-align: center;
+        color: #3b5b69;
+      }
+      .cuoi{
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-around;
+        height: 250px;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+
+      .footer-section {
+        flex: 1;
+        margin: 0 20px;
+      }
+
+      .footer-section h1,
+      .footer-section h3 {
+        color:#3b5b69;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: #3b5b69;
+        text-decoration: none;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-section li {
+        margin: 10px 0;
+      }
+
+      .footer-section a:hover {
+        text-decoration: underline;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .social-icon img {
+        width: 20px;
+        height: 20px;
+        transition: transform 0.3s;
+      }
+
+      .social-icon:hover img {
+        transform: scale(1.2);
+      }
+      .footer-section h1{
+        text-align: left;
+      }
+      .text-sale h1{
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <a class="logo">
+          <img src="item/icon/logo.png" alt="Logo" />
+        </a>
+        <ul class="menu">
+          <li class="item">
+            <a href="#">Giới thiệu</a>
+          </li>
+          <li class="item">
+            <a href="#">Collection</a>
+          </li>
+          <li class="item">
+            <a href="#">Nam</a>
+          </li>
+          <li class="item">
+            <a href="#">Nữ</a>
+          </li>
+          <li class="item">
+            <a href="#">Sale</a>
+          </li>
+          <li class="item">
+            <a href="#">Liên hệ</a>
+          </li>
+        </ul>
+        <div class="actions">
+          <div class="item">
+            <img src="item/icon/search.png" alt="Search" />
+          </div>
+          <div class="item">
+            <img src="item/icon/tim.png" alt="Heart" />
+          </div>
+          <div class="item">
+            <img src="item/icon/gio.png" alt="Cart" />
+          </div>
+        </div>
+      </div>
+      <div class="banner">
+        <div class="background-container"></div>
+        <div class="box-left">
+          <h2>FASHION</h2>
+          <button>Mua ngay</button>
+        </div>
+      </div>
+      <div class="gioithieu">
+        <div class="content">
+          <div class="title">Giới thiệu</div>
+        </div>
+        <div class="left-text">
+          <i
+            >FASHION là một thương hiệu thời trang mang đến phong cách hiện đại
+            và tinh tế cho mọi người.</i
+          >
+        </div>
+        <div class="right-text">
+          <i
+            >Chúng tôi tự hào với sự đa dạng trong thiết kế, từ trang phục hàng
+            ngày, công sở, dạo phố đến những bộ cảnh dự tiệc sang trọng.</i
+          >
+        </div>
+      </div>
+      <div class="wp-products">
+        <h1>SUMMER 2024 NEW COLLECTION</h1>
+        <img
+          src="item/banner/fbb6f9ae132595fae7c72b094294205c.jpg"
+          alt="New Collection"
+        />
+      </div>
+      <div class="hang">
+        <div class="gallery">
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/bosuutap/9603c1cce85dbb3dd5087eba1806e3cc.webp"
+              alt="Đầm xòe thắt dây eo"
+            />
+            <div class="info">
+              <h3>Đầm xòe thắt dây eo</h3>
+              <p class="price">
+                1.113.000đ <span class="original-price">1.590.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/bosuutap/e6035c332549b87f17e4b0175295fbc4 (1).webp"
+              alt="Swing Sea - Đầm Maxi Họa Tiết"
+            />
+            <div class="info">
+              <h3>Swing Sea - Đầm Maxi Họa Tiết</h3>
+              <p class="price">
+                1.253.000đ <span class="original-price">1.790.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/bosuutap/71ba69da00e272626da964d3ea78e931.webp"
+              alt="Lozenge Set - Áo Sơ Mi Họa Tiết"
+            />
+            <div class="info">
+              <h3>Lozenge Set - Áo Sơ Mi Họa Tiết</h3>
+              <p class="price">
+                903.000đ <span class="original-price">1.290.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/bosuutap/9ac9a5dddc905e2cc9bd258c264416d6.webp"
+              alt="Bliss Dress - Đầm Xòe Dạo Phố"
+            />
+            <div class="info">
+              <h3>Bliss Dress - Đầm Xòe Dạo Phố</h3>
+              <p class="price">
+                1.533.000đ <span class="original-price">2.190.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/bosuutap/0bdfa4229827fcdf3d0da8b2b6c8ed02.webp"
+              alt="ĐẦM VOAN HOA DÁNG XÒE"
+            />
+            <div class="info">
+              <h3>ĐẦM VOAN HOA DÁNG XÒE</h3>
+              <p class="price">
+                1.043.000đ <span class="original-price">1.490.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/bosuutap/5f927f5fb55719e6e8d41a9c30514f38.webp"
+              alt="Freesia Dress - Đầm Xòe Xếp Ly Cổ Vuông"
+            />
+            <div class="info">
+              <h3>Freesia Dress - Đầm Xòe Xếp Ly Cổ Vuông</h3>
+              <p class="price">
+                1.603.000đ <span class="original-price">2.290.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/bosuutap/2962587d22a386418475c8c637388fdc.webp"
+              alt="ĐẦM VOAN HOA DÁNG XÒE"
+            />
+            <div class="info">
+              <h3>ĐẦM VOAN HOA DÁNG XÒE</h3>
+              <p class="price">
+                1.253.000đ <span class="original-price">1.790.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/bosuutap/c786f78548fa5022249b79cc88cdfe37.webp"
+              alt="ĐẦM VOAN HOA DÁNG XÒE"
+            />
+            <div class="info">
+              <h3>ĐẦM VOAN HOA DÁNG XÒE</h3>
+              <p class="price">
+                1.253.000đ <span class="original-price">1.790.000đ</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wp-products">
+        <h1>Nam</h1>
+      </div>
+      <div class="hang">
+        <div class="gallery">
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/ao1.jpg"
+              alt="Đầm xòe thắt dây eo"
+            />
+            <div class="info">
+              <h3>ÁO PHÔNG DỆT KIM HỌA TIẾT KIỂU NHUỘM TIE DYE</h3>
+              <p class="price">
+                599.000đ <span class="original-price">1.599.000 VND</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/ao2.jpg"
+              alt="Swing Sea - Đầm Maxi Họa Tiết"
+            />
+            <div class="info">
+              <h3>ÁO NỈ HỌA TIẾT TRỪU TƯỢNG</h3>
+              <p class="price">
+                499.000đ <span class="original-price">1.290.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/ao3.jpg"
+              alt="Lozenge Set - Áo Sơ Mi Họa Tiết"
+            />
+            <div class="info">
+              <h3>ÁO PHÔNG 100% VẢI LINEN</h3>
+              <p class="price">
+                599.000đ <span class="original-price">1.290.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/ao4.jpg"
+              alt="Bliss Dress - Đầm Xòe Dạo Phố"
+            />
+            <div class="info">
+              <h3>ÁO POLO DỆT KIM</h3>
+              <p class="price">
+                799.000đ <span class="original-price">1.499.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/q1.jpg"
+              alt="QUẦN VẢI DỆT HỌA TIẾT KẺ SỌC"
+            />
+            <div class="info">
+              <h3>QUẦN VẢI DỆT HỌA TIẾT KẺ SỌC</h3>
+              <p class="price">
+                999.000đ <span class="original-price">1.490.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/q2.jpg"
+              alt="QUẦN DỆT HOA VĂN"
+            />
+            <div class="info">
+              <h3>QUẦN DỆT HOA VĂN</h3>
+              <p class="price">
+                699.000đ <span class="original-price">1.290.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/q3.jpg"
+              alt="QUẦN VẢI NHUNG TĂM UTILITY"
+            />
+            <div class="info">
+              <h3>QUẦN VẢI NHUNG TĂM UTILITY</h3>
+              <p class="price">
+                753.000đ <span class="original-price">1.790.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/q4.jpg"
+              alt="QUẦN VẢI COTTON - LINEN"
+            />
+            <div class="info">
+              <h3>QUẦN VẢI COTTON - LINEN</h3>
+              <p class="price">
+                1.253.000đ <span class="original-price">1.790.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/giay1.jpg"
+              alt="GIÀY THỂ THAO KHÔNG DÂY BUỘC"
+            />
+            <div class="info">
+              <h3>GIÀY THỂ THAO KHÔNG DÂY BUỘC</h3>
+              <p class="price">
+                1.150.000đ <span class="original-price">1.990.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/giay2 (1).jpg"
+              alt="GIÀY THỂ THAO DÁNG CƠ BẢN PHỐI NHIỀU MÀU"
+            />
+            <div class="info">
+              <h3>GIÀY THỂ THAO DÁNG CƠ BẢN PHỐI NHIỀU MÀU</h3>
+              <p class="price">
+                1.000.000đ <span class="original-price">1.890.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/giay3.jpg"
+              alt="BỐT PHỐI CHẤT LIỆU ĐẾ DÀY"
+            />
+            <div class="info">
+              <h3>BỐT PHỐI CHẤT LIỆU ĐẾ DÀY</h3>
+              <p class="price">
+                1.200.000đ <span class="original-price">2.790.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <img
+              src="item/donam/giay4.jpg"
+              alt="GIÀY DA LỘN BUỘC DÂY ĐẾ BỆN"
+            />
+            <div class="info">
+              <h3>GIÀY DA LỘN BUỘC DÂY ĐẾ BỆN</h3>
+              <p class="price">
+                1.300.000đ <span class="original-price">1.990.000đ</span>
+              </p>
+            </div>
+          </div>
+      </div>
+        </div>
+        
+        <div class="wp-products">
+        <h1>Nữ</h1>
+        </div>
+        <div class="hang">
+          <div class="gallery">
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/ao1.jpg"
+                alt="PLAYSUIT VẢI HIỆU ỨNG NHĂN"
+              />
+              <div class="info">
+                <h3>PLAYSUIT VẢI HIỆU ỨNG NHĂN</h3>
+                <p class="price">
+                  1.399.000đ <span class="original-price">1.999.000 VND</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/ao2.jpg"
+                alt="JUMPSUIT DÁNG RỘNG KÈM THẮT LƯNG"
+              />
+              <div class="info">
+                <h3>JUMPSUIT DÁNG RỘNG KÈM THẮT LƯNG</h3>
+                <p class="price">
+                  1.499.000đ <span class="original-price">2.290.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/ao3.jpg"
+                alt="ÁO LIỀN QUẦN CỔ YẾM KÈM THẮT LƯNG"
+              />
+              <div class="info">
+                <h3>ÁO LIỀN QUẦN CỔ YẾM KÈM THẮT LƯNG</h3>
+                <p class="price">
+                  1.299.000đ <span class="original-price">1.790.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/ao4.jpg"
+                alt="ĐẦM CÚP NGỰC PHỐI HOA"
+              />
+              <div class="info">
+                <h3>ĐẦM CÚP NGỰC PHỐI HOA</h3>
+                <p class="price">
+                  1.799.000đ <span class="original-price">2.499.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/guoc1.jpg"
+                alt="GIÀY CAO GÓT HỞ SAU MŨI ĐÍNH TRANG TRÍ"
+              />
+              <div class="info">
+                <h3>GIÀY CAO GÓT HỞ SAU MŨI ĐÍNH TRANG TRÍ</h3>
+                <p class="price">
+                  999.000đ <span class="original-price">1.790.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/guoc2.jpg"
+                alt="GUỐC NHIỀU QUAI"
+              />
+              <div class="info">
+                <h3>GUỐC NHIỀU QUAI</h3>
+                <p class="price">
+                  1.699.000đ <span class="original-price">2.290.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/guoc3.jpg"
+                alt="GIÀY MULE VẢI GÓT KITTEN"
+              />
+              <div class="info">
+                <h3>GIÀY MULE VẢI GÓT KITTEN</h3>
+                <p class="price">
+                  1.753.000đ <span class="original-price">2.790.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/guoc4.jpg"
+                alt="METALLIC SANDALS WITH KNOTTED STRAPS"
+              />
+              <div class="info">
+                <h3>METALLIC SANDALS WITH KNOTTED STRAPS</h3>
+                <p class="price">
+                  1.350.000đ <span class="original-price">1.990.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/tui1.jpg"
+                alt="TÚI ĐEO CHÉO DẬP ĐINH TÁN MINI"
+              />
+              <div class="info">
+                <h3>TÚI ĐEO CHÉO DẬP ĐINH TÁN MINI</h3>
+                <p class="price">
+                  1.100.000đ <span class="original-price">1.990.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/tui2.jpg"
+                alt="TÚI ĐEO VAI TẾT BỆN"
+              />
+              <div class="info">
+                <h3>TÚI ĐEO VAI TẾT BỆN</h3>
+                <p class="price">
+                  1.000.000đ <span class="original-price">2.190.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/tui3.jpg"
+                alt="TÚI XÁCH MINI CHẦN CHỈ NỔ"
+              />
+              <div class="info">
+                <h3>TÚI XÁCH MINI CHẦN CHỈ NỔ</h3>
+                <p class="price">
+                  1.500.000đ <span class="original-price">2.390.000đ</span>
+                </p>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="icons">
+                <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+                <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+              </div>
+              <img
+                src="item/donu/tui4.jpg"
+                alt="TÚI ĐEO CHÉO"
+              />
+              <div class="info">
+                <h3>TÚI ĐEO CHÉO</h3>
+                <p class="price">
+                  1.399.000đ <span class="original-price">1.990.000đ</span>
+                </p>
+              </div>
+            </div>
+              </div>
+                </div>
+                <div class="bannersale">
+                  <div class="sale-container">
+              <div class="text-sale">
+                <h1>SALE UP TO</h1>
+                <h2>50%</h2>
+              </div>
+              <div class="image-sale">
+                <img src="item/banner/pexels-cottonbro-10669824 (1).jpg" alt="Sale Image" />
+              </div>
+            </div>
+          </div>
+          <div class="wp-products">
+        <h1>SALE</h1>
+      </div>
+      <div class="hang">
+        <div class="gallery">
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale1.jpg"
+              alt="ÁO KHOÁC VẢI DỆT"
+            />
+            <div class="info">
+              <h3>ÁO KHOÁC VẢI DỆT</h3>
+              <p class="price">
+                999.000đ <span class="original-price">2.000.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale2.jpg"
+              alt="ÁO LEN HỌA TIẾT CON RỒNG"
+            />
+            <div class="info">
+              <h3>ÁO LEN HỌA TIẾT CON RỒNG</h3>
+              <p class="price">
+                1.200.000đ <span class="original-price">2.400.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale3.jpg"
+              alt="ÁO KHOÁC DÁNG SƠ MI CÓ TÚI X CASA JOSEPHINE"
+            />
+            <div class="info">
+              <h3>ÁO KHOÁC DÁNG SƠ MI CÓ TÚI X CASA JOSEPHINE</h3>
+              <p class="price">
+                995.000đ <span class="original-price">1.990.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale4.jpg"
+              alt="ÁO NỈ IN CHỮ CÓ MŨ"
+            />
+            <div class="info">
+              <h3>ÁO NỈ IN CHỮ CÓ MŨ</h3>
+              <p class="price">
+                1.249.000đ <span class="original-price">2.499.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale5.jpg"
+              alt="QUẦN CARGO PARACHU"
+            />
+            <div class="info">
+              <h3>QUẦN CARGO PARACHU</h3>
+              <p class="price">
+                999.000đ <span class="original-price">1.998.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale6.jpg"
+              alt="QUẦN JEANS DÁNG SLIM FIT KIỂU BẠC MÀU"
+            />
+            <div class="info">
+              <h3>QUẦN JEANS DÁNG SLIM FIT KIỂU BẠC MÀU</h3>
+              <p class="price">
+                799.000đ <span class="original-price">1.598.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale7.jpg"
+              alt="GIÀY THỂ THAO"
+            />
+            <div class="info">
+              <h3>GIÀY THỂTHAO</h3>
+              <p class="price">
+                1.753.000đ <span class="original-price">3.506.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale8.jpg"
+              alt="GIÀY THỂ THAO DA LỘN"
+            />
+            <div class="info">
+              <h3>GIÀY THỂ THAO DA LỘN</h3>
+              <p class="price">
+                599.000đ <span class="original-price">1.198.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale9.jpg"
+              alt="ÁO PHÔNG VẢI BÓNG NHẸ PHONG CÁCH MINIMALISM"
+            />
+            <div class="info">
+              <h3>ÁO PHÔNG VẢI BÓNG NHẸ PHONG CÁCH MINIMALISM</h3>
+              <p class="price">
+                1.100.000đ <span class="original-price">2.200.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale10.jpg"
+              alt="METALLIC THREAD STRIPED SHI"
+            />
+            <div class="info">
+              <h3>METALLIC THREAD STRIPED SHI</h3>
+              <p class="price">
+                1.000.000đ <span class="original-price">2.000.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale11.jpg"
+              alt="ÁO SƠ MI VẢI PHA LINEN HỌA TIẾT KẺ SỌC"
+            />
+            <div class="info">
+              <h3>ÁO SƠ MI VẢI PHA LINEN HỌA TIẾT KẺ SỌC</h3>
+              <p class="price">
+                1.500.000đ <span class="original-price">3.000.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale12.jpg"
+              alt="ÁO PHÔNG VẢI GÂN SỢI VISCOSE"
+            />
+            <div class="info">
+              <h3>ÁO PHÔNG VẢI GÂN SỢI VISCOSE</h3>
+              <p class="price">
+                700.000đ <span class="original-price">1.400.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale13.jpg"
+              alt="QUẦN ỐNG RỘNG CẠP CAO"
+            />
+            <div class="info">
+              <h3>QUẦN ỐNG RỘNG CẠP CAO</h3>
+              <p class="price">
+                800.000đ <span class="original-price">1.600.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale14.jpg"
+              alt="QUẦN VẢI RŨ XẾP LI"
+            />
+            <div class="info">
+              <h3>QUẦN VẢI RŨ XẾP LI</h3>
+              <p class="price">
+                699.000đ <span class="original-price">1.398.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale15.jpg"
+              alt="GUỐC CAO GÓT QUAI NHỰA VINYL ĐÍNH ĐÁ LẤP LÁNH"
+            />
+            <div class="info">
+              <h3>GUỐC CAO GÓT QUAI NHỰA VINYL ĐÍNH ĐÁ LẤP LÁNH</h3>
+              <p class="price">
+                1.399.000đ <span class="original-price">2.798.000đ</span>
+              </p>
+            </div>
+          </div>
+          <div class="item2">
+            <div class="icons">
+              <i class="fas fa-heart"><img src="item/icon/tim2.png" /></i>
+              <i class="fas fa-shopping-cart"><img src="item/icon/gio2.png" /></i>
+            </div>
+            <div class="sale-badge">-50%</div>
+            <img
+              src="item/sale/sale16.jpg"
+              alt="GUỐC DA CAO GÓT QUAI ỐNG"
+            />
+            <div class="info">
+              <h3>GUỐC DA CAO GÓT QUAI ỐNG</h3>
+              <p class="price">
+                899.000đ <span class="original-price">1.798.000đ</span>
+              </p>
+            </div>
+          </div>
+      </div>
+        </div>
+        <div class="danhgia">
+      <h1>ĐÁNH GIÁ</h1>
+      <div class="reviews">
+        <div class="review">
+          <img src="item/review/danhgia3.jpg" alt="avatar" />
+          <h2>Minh Quang</h2>
+          <p>
+            Quần áo tại FASHION có chất liệu cao cấp và thiết kế tinh tế. Sản
+            phẩm bền và đẹp, rất đáng đồng tiền.
+          </p>
+        </div>
+        <div class="review">
+          <img src="item/review/danhgia2.webp" alt="avatar" />
+          <h2>Hoàng Hùng</h2>
+          <p>
+            Mình vừa mua một chiếc quần jean từ FASHION, chất liệu dày dặn nhưng
+            vẫn co giãn tốt, rất thoải mái khi vận động. Màu sắc và kiểu dáng
+            đúng như hình, rất hài lòng.
+          </p>
+        </div>
+        <div class="review">
+          <img src="item/review/danhgia1.jpg" alt="avatar" />
+          <h2>Quỳnh Anh</h2>
+          <p>
+            Tôi rất ấn tượng với chiếc váy mình mua từ FASHION, chất liệu vải
+            mềm mại và thoáng mát. Đường may rất chắc chắn và tinh tế, mặc vào
+            cảm giác thoải mái cả ngày.
+          </p>
+        </div>
+      </div>
+    </div>
+    <h1>Liên hệ</h1>
+    <div class="contact">
+      <div class="contact-form">
+        <form>
+          <label for="name">Tên:</label>
+          <input type="text" id="name" name="name" />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" />
+
+          <label for="phone">Điện thoại:</label>
+          <input type="tel" id="phone" name="phone" />
+
+          <label for="message">Nội dung:</label>
+          <textarea id="message" name="message"></textarea>
+
+          <button type="submit">Gửi</button>
+        </form>
+      </div>
+    </div>
+    <div class="cuoi">
+    <div class="footer">
+      <div class="footer-section">
+        <h1>FASHION</h1>
+        <br>
+        <p>
+          Chúng tôi cam kết mang đến cho khách hàng những trải nghiệm thời trang
+          tuyệt vời cùng với những sản phẩm chất lượng và dịch vụ hoàn hảo. Sự
+          hài lòng của khách hàng là mục tiêu hàng đầu của chúng tôi.
+        </p>
+        <br>
+        <p>Điện thoại: 0123456789</p>
+        <p>Email: admin@gmail.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Trợ giúp</h3>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Chính sách trả hàng</a></li>
+          <li><a href="#">Kiểm tra đơn hàng</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Thương hiệu</h3>
+        <ul>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Mạng xã hội</h3>
+        <br>
+        <div class="social-icons">
+          <a href="#" class="social-icon"
+            ><img src="item/icon/facebook.png" alt="Facebook"
+          /></a>
+          <a href="#" class="social-icon"
+            ><img src="item/icon/OIP.png" alt="Instagram"
+          /></a>
+          <a href="#" class="social-icon"
+            ><img src="item/icon/tiktok.png" alt="TikTok"
+          /></a>
+        </div>
+      </div>
+    </div>
+    </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </body>
+</html>
